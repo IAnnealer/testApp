@@ -8,7 +8,9 @@
 import UIKit
 
 enum GlobalConstant {
-  static let text_primary: UIColor = .black
-  static let text_secondary: UIColor = .init(red: 119, green: 119, blue: 119, alpha: 1)
-  static let accent: UIColor = .init(red: 236, green: 94, blue: 101, alpha: 1)
+  enum Color {
+    static let text_primary: UIColor = .black
+    static let text_secondary: UIColor = .init(red: 119 / 255, green: 119 / 255, blue: 119 / 255, alpha: 1)
+    static let accent: UIColor = .init(red: 236 / 255, green: 94 / 255, blue: 101 / 255, alpha: 1)
+  }
 }

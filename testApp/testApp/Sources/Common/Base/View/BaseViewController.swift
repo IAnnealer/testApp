@@ -15,6 +15,10 @@ class BaseViewController: UIViewController {
 
   var disposeBag: DisposeBag = .init()
 
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -25,7 +29,9 @@ class BaseViewController: UIViewController {
   }
 
   /// Override Layout
-  func setupViews() { }
+  func setupViews() {
+    view.backgroundColor = .white
+  }
 
   /// Override Constraints
   func setupLayoutConstraints() { }

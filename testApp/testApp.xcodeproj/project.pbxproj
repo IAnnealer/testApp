@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8616BA49288264A000950CB1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA48288264A000950CB1 /* AppCoordinator.swift */; };
+		8616BA4E28826B0400950CB1 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA4D28826B0400950CB1 /* FavoritesViewController.swift */; };
+		8616BA5028826B0800950CB1 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA4F28826B0800950CB1 /* FavoritesViewModel.swift */; };
+		8616BA5228826B5600950CB1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA5128826B5600950CB1 /* HomeCoordinator.swift */; };
+		8616BA5428826B5D00950CB1 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA5328826B5D00950CB1 /* FavoritesCoordinator.swift */; };
 		8628E14228824CD400019C8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E14128824CD400019C8E /* AppDelegate.swift */; };
 		8628E14428824CD400019C8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E14328824CD400019C8E /* SceneDelegate.swift */; };
 		8628E14628824CD400019C8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E14528824CD400019C8E /* HomeViewController.swift */; };
@@ -20,11 +25,17 @@
 		8628E18B28825F8400019C8E /* ObservableConvertibleType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E18A28825F8400019C8E /* ObservableConvertibleType+.swift */; };
 		8628E18F28825FF200019C8E /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E18E28825FF200019C8E /* UIViewController+.swift */; };
 		8628E1912882602B00019C8E /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E1902882602B00019C8E /* Array+.swift */; };
+		8628E1972882613E00019C8E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E1962882613E00019C8E /* HomeViewModel.swift */; };
 		A9E3E33156D3BC1D715D681E /* Pods_testApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12243F7225F1CEBC654A77E /* Pods_testApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5EDA9162DD299FEF54AFAE27 /* Pods-testApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testApp.debug.xcconfig"; path = "Target Support Files/Pods-testApp/Pods-testApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8616BA48288264A000950CB1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		8616BA4D28826B0400950CB1 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		8616BA4F28826B0800950CB1 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		8616BA5128826B5600950CB1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		8616BA5328826B5D00950CB1 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		8628E13E28824CD400019C8E /* testApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8628E14128824CD400019C8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8628E14328824CD400019C8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +51,7 @@
 		8628E18A28825F8400019C8E /* ObservableConvertibleType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableConvertibleType+.swift"; sourceTree = "<group>"; };
 		8628E18E28825FF200019C8E /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8628E1902882602B00019C8E /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		8628E1962882613E00019C8E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		92F89495CE79BAB22E09696D /* Pods-testApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testApp.release.xcconfig"; path = "Target Support Files/Pods-testApp/Pods-testApp.release.xcconfig"; sourceTree = "<group>"; };
 		A12243F7225F1CEBC654A77E /* Pods_testApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,6 +75,32 @@
 				92F89495CE79BAB22E09696D /* Pods-testApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8616BA4A28826AE300950CB1 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				8616BA5328826B5D00950CB1 /* FavoritesCoordinator.swift */,
+				8616BA4B28826AE900950CB1 /* Views */,
+				8616BA4C28826AF400950CB1 /* ViewModels */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		8616BA4B28826AE900950CB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8616BA4D28826B0400950CB1 /* FavoritesViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8616BA4C28826AF400950CB1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8616BA4F28826B0800950CB1 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		8628E13528824CD300019C8E = {
@@ -117,7 +155,9 @@
 		8628E17A28825C8D00019C8E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8628E14528824CD400019C8E /* HomeViewController.swift */,
+				8616BA48288264A000950CB1 /* AppCoordinator.swift */,
+				8628E1922882611900019C8E /* Home */,
+				8616BA4A28826AE300950CB1 /* Favorites */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -166,6 +206,32 @@
 				8628E18828825EEB00019C8E /* GlobalConstant.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8628E1922882611900019C8E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8616BA5128826B5600950CB1 /* HomeCoordinator.swift */,
+				8628E1932882612D00019C8E /* Views */,
+				8628E1952882613100019C8E /* ViewModels */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8628E1932882612D00019C8E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8628E14528824CD400019C8E /* HomeViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8628E1952882613100019C8E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8628E1962882613E00019C8E /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		95ED97EAF74261932CCF6B61 /* Frameworks */ = {
@@ -290,16 +356,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8616BA5028826B0800950CB1 /* FavoritesViewModel.swift in Sources */,
 				8628E17E28825CEF00019C8E /* Coordinator.swift in Sources */,
 				8628E1912882602B00019C8E /* Array+.swift in Sources */,
+				8616BA4E28826B0400950CB1 /* FavoritesViewController.swift in Sources */,
+				8616BA49288264A000950CB1 /* AppCoordinator.swift in Sources */,
 				8628E14628824CD400019C8E /* HomeViewController.swift in Sources */,
 				8628E18F28825FF200019C8E /* UIViewController+.swift in Sources */,
 				8628E18928825EEB00019C8E /* GlobalConstant.swift in Sources */,
 				8628E14228824CD400019C8E /* AppDelegate.swift in Sources */,
 				8628E18028825D5800019C8E /* ViewModelType.swift in Sources */,
+				8628E1972882613E00019C8E /* HomeViewModel.swift in Sources */,
 				8628E14428824CD400019C8E /* SceneDelegate.swift in Sources */,
 				8628E18628825E7500019C8E /* UICollectionView+.swift in Sources */,
+				8616BA5228826B5600950CB1 /* HomeCoordinator.swift in Sources */,
 				8628E18328825DAA00019C8E /* BaseViewController.swift in Sources */,
+				8616BA5428826B5D00950CB1 /* FavoritesCoordinator.swift in Sources */,
 				8628E18B28825F8400019C8E /* ObservableConvertibleType+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
