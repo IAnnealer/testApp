@@ -6,7 +6,11 @@
 //
 
 import UIKit
+
+import RxCocoa
 import RxSwift
+import SnapKit
+import Then
 
 final class HomeViewController: BaseViewController {
 
@@ -15,6 +19,7 @@ final class HomeViewController: BaseViewController {
   }
 
   // MARK: - Properties
+  private weak var collectionView: UICollectionView!
   private let viewModel: HomeViewModel!
 
   init(viewModel: HomeViewModel) {
@@ -35,10 +40,25 @@ final class HomeViewController: BaseViewController {
     super.setupViews()
     
     navigationItem.title = Constant.navigationTitle
+
+    let flowLayout: UICollectionViewFlowLayout = .init().then {
+      $0.scrollDirection = .vertical
+    }
+
+    collectionView = .init(frame: .zero, collectionViewLayout: flowLayout).then {
+      $0.registerCellClass(cellType: BannerCell.self)
+      $0.registerCellClass(cellType: GoodsCell.self)
+      $0.rx.setDelegate(self).disposed(by: disposeBag)
+      $0.backgroundColor = .clear
+      view.addSubview($0)
+    }
   }
 
   override func setupLayoutConstraints() {
-
+    collectionView.snp.makeConstraints {
+      $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
+      $0.leading.trailing.equalToSuperview()
+    }
   }
 
   override func bind() -> Disposable {
@@ -48,3 +68,5 @@ final class HomeViewController: BaseViewController {
   }
 }
 
+// MARK: - UICollectionViewDelegate
+extension HomeViewController: UICollectionViewDelegate { }

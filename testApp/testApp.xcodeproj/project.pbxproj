@@ -12,6 +12,8 @@
 		8616BA5028826B0800950CB1 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA4F28826B0800950CB1 /* FavoritesViewModel.swift */; };
 		8616BA5228826B5600950CB1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA5128826B5600950CB1 /* HomeCoordinator.swift */; };
 		8616BA5428826B5D00950CB1 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA5328826B5D00950CB1 /* FavoritesCoordinator.swift */; };
+		8616BA572882835500950CB1 /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA562882835500950CB1 /* BannerCell.swift */; };
+		8616BA592882847700950CB1 /* GoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616BA582882847700950CB1 /* GoodsCell.swift */; };
 		8628E14228824CD400019C8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E14128824CD400019C8E /* AppDelegate.swift */; };
 		8628E14428824CD400019C8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E14328824CD400019C8E /* SceneDelegate.swift */; };
 		8628E14628824CD400019C8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E14528824CD400019C8E /* HomeViewController.swift */; };
@@ -36,6 +38,8 @@
 		8616BA4F28826B0800950CB1 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		8616BA5128826B5600950CB1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		8616BA5328826B5D00950CB1 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		8616BA562882835500950CB1 /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		8616BA582882847700950CB1 /* GoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCell.swift; sourceTree = "<group>"; };
 		8628E13E28824CD400019C8E /* testApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8628E14128824CD400019C8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8628E14328824CD400019C8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +105,15 @@
 				8616BA4F28826B0800950CB1 /* FavoritesViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8616BA552882834700950CB1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8616BA562882835500950CB1 /* BannerCell.swift */,
+				8616BA582882847700950CB1 /* GoodsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		8628E13528824CD300019C8E = {
@@ -221,6 +234,7 @@
 		8628E1932882612D00019C8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8616BA552882834700950CB1 /* Cells */,
 				8628E14528824CD400019C8E /* HomeViewController.swift */,
 			);
 			path = Views;
@@ -362,6 +376,7 @@
 				8616BA4E28826B0400950CB1 /* FavoritesViewController.swift in Sources */,
 				8616BA49288264A000950CB1 /* AppCoordinator.swift in Sources */,
 				8628E14628824CD400019C8E /* HomeViewController.swift in Sources */,
+				8616BA592882847700950CB1 /* GoodsCell.swift in Sources */,
 				8628E18F28825FF200019C8E /* UIViewController+.swift in Sources */,
 				8628E18928825EEB00019C8E /* GlobalConstant.swift in Sources */,
 				8628E14228824CD400019C8E /* AppDelegate.swift in Sources */,
@@ -373,6 +388,7 @@
 				8628E18328825DAA00019C8E /* BaseViewController.swift in Sources */,
 				8616BA5428826B5D00950CB1 /* FavoritesCoordinator.swift in Sources */,
 				8628E18B28825F8400019C8E /* ObservableConvertibleType+.swift in Sources */,
+				8616BA572882835500950CB1 /* BannerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
