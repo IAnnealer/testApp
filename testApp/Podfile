@@ -12,4 +12,5 @@ target 'testApp' do
   pod 'RxCocoa', '6.5.0'
   pod 'Moya/RxSwift'
   pod 'SDWebImage'
+  pod 'RealmSwift'
 end
