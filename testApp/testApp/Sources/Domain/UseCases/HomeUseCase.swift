@@ -18,7 +18,7 @@ protocol HomeUseCase {
 final class DefaultHomeUseCase: HomeUseCase {
 
   private let homeRepository: HomeRepository
-  private let persistentStorage: PersistentStorage
+  private let persistentStorage: LocalStorable
 
   init() {
     self.homeRepository = DefaultHomeRepository()
@@ -34,14 +34,14 @@ final class DefaultHomeUseCase: HomeUseCase {
   }
 
   func fetchFavoriteItem() -> Observable<[Item]> {
-    .just(Array(persistentStorage.fetchFavoriteItemList()))
+    persistentStorage.fetch()
   }
 
   func addFavoriteItem(item: Item) {
-    persistentStorage.addFavoriteItem(item: item)
+    persistentStorage.add(item: item)
   }
 
   func deleteFavoriteItem(item: Item) {
-    persistentStorage.deleteFavoriteItem(item: item)
+    persistentStorage.delete(item: item)
   }
 }
