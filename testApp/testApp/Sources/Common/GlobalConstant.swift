@@ -13,4 +13,6 @@ enum GlobalConstant {
     static let text_secondary: UIColor = .init(red: 119 / 255, green: 119 / 255, blue: 119 / 255, alpha: 1)
     static let accent: UIColor = .init(red: 236 / 255, green: 94 / 255, blue: 101 / 255, alpha: 1)
   }
+
+  static let baseURL: String = "http://d2bab9i9pr8lds.cloudfront.net/api/home"
 }
