@@ -10,21 +10,38 @@ import RxSwift
 protocol HomeUseCase {
   func fetchContents() -> Observable<ContentReponse>
   func fetchMoreGoods(lastId: Int) -> Observable<GoodsResponse>
+  func fetchFavoriteItem() -> Observable<[Item]>
+  func addFavoriteItem(item: Item)
+  func deleteFavoriteItem(item: Item)
 }
 
 final class DefaultHomeUseCase: HomeUseCase {
 
-  private let repository: HomeRepository
+  private let homeRepository: HomeRepository
+  private let persistentStorage: PersistentStorage
 
   init() {
-    self.repository = DefaultHomeRepository()
+    self.homeRepository = DefaultHomeRepository()
+    self.persistentStorage = PersistentStorage.shared
   }
 
   func fetchContents() -> Observable<ContentReponse> {
-    repository.fetchContents()
+    homeRepository.fetchContents()
   }
 
   func fetchMoreGoods(lastId: Int) -> Observable<GoodsResponse> {
-    repository.fetchMoreGoods(lastId: lastId)
+    homeRepository.fetchMoreGoods(lastId: lastId)
+  }
+
+  func fetchFavoriteItem() -> Observable<[Item]> {
+    .just(Array(persistentStorage.fetchFavoriteItemList()))
+  }
+
+  func addFavoriteItem(item: Item) {
+    persistentStorage.addFavoriteItem(item: item)
+  }
+
+  func deleteFavoriteItem(item: Item) {
+    persistentStorage.deleteFavoriteItem(item: item)
   }
 }

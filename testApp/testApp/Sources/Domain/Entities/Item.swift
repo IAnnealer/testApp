@@ -5,26 +5,26 @@
 //  Created by Ian on 2022/07/16.
 //
 
-import Foundation
+import RealmSwift
 
 struct GoodsResponse: Codable {
   var goods: [Item]
 }
 
-struct Item: Codable {
-  let id: Int
-  let name: String
-  let imageURLString: String
-  let actualPrice: Int
-  let price: Int
-  let isNew: Bool
-  let sellCount: Int
+class Item: Object, Codable {
+  @objc dynamic var id: Int
+  @objc dynamic var name: String
+  @objc dynamic var imageURLString: String
+  @objc dynamic var actualPrice: Int
+  @objc dynamic var price: Int
+  @objc dynamic var isNew: Bool
+  @objc dynamic var sellCount: Int
 
-  var imageURL: URL {
+  @objc dynamic var imageURL: URL {
     return URL(string: imageURLString)!
   }
 
-  var discountRate: Int {
+  @objc dynamic var discountRate: Int {
     return 100 - (price * 100 / actualPrice)
   }
 
