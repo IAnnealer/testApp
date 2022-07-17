@@ -160,15 +160,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
       }
 
       let isFavorite: Bool = viewModel.favoriteItemIdList?.contains(item.id) ?? false
-      let goodscell = collectionView.dequeueReusableCell(cellType: GoodsCell.self,
+      let goodsCell = collectionView.dequeueReusableCell(cellType: GoodsCell.self,
                                                          indexPath: indexPath)
-      goodscell.configure(
+      goodsCell.configure(
         item: item,
         isFavoriteItem: isFavorite,
         addFavoriteTrigger: addFavoriteItemSubject.asObserver(),
         deleteFavoriteTrigger: deleteFavoriteItemSubject.asObserver()
       )
-      cell = goodscell
+      cell = goodsCell
     }
 
     return cell
