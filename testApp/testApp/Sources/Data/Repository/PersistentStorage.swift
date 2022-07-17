@@ -18,19 +18,23 @@ final class PersistentStorage: LocalStorable {
     self.realm = try! Realm()
   }
 
-  func add(item: Item) {
-    try! realm.write {
-      realm.add(item)
-    }
-  }
-
   func fetch() -> Observable<[Item]> {
     return .just(.init(realm.objects(Item.self)))
   }
 
-  func delete(item: Item) {
+  func add(item: Item) -> Observable<[Item]> {
     try! realm.write({
-      realm.delete(realm.objects(Item.self).filter({$0.id == item.id}))
+      realm.add(item)
     })
+
+    return fetch()
+  }
+
+  func delete(item: Item) -> Observable<[Item]> {
+    try! realm.write({
+      realm.delete(realm.objects(Item.self).filter { $0.id == item.id })
+    })
+
+    return fetch()
   }
 }
