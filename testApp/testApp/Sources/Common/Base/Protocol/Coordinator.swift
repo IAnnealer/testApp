@@ -16,11 +16,4 @@ protocol Coordinator: AnyObject {
 
   // MARK: - Methods
   func start()
-  func addChild(_ child: Coordinator)
-}
-
-extension Coordinator {
-  func addChild(_ child: Coordinator) {
-    childCoordinators.append(child)
-  }
 }

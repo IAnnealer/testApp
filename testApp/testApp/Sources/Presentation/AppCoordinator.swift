@@ -26,6 +26,7 @@ final class AppCoordinator {
   }
 }
 
+// MARK: - Private
 private extension AppCoordinator {
   func setupTabBarCoordinator() {
     let homeNavigationController: UINavigationController

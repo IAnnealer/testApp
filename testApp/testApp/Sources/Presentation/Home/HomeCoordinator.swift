@@ -44,9 +44,10 @@ final class DefaultHomeCoordinator: HomeCoordinator {
   }
 }
 
+// MARK: - Private
 private extension DefaultHomeCoordinator {
   func getViewController() -> HomeViewController {
-    let viewModel: HomeViewModel = .init()
+    let viewModel: HomeViewModel = .init(useCase: DefaultHomeUseCase())
     let viewController: HomeViewController = .init(viewModel: viewModel)
 
     return viewController
