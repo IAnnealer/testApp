@@ -22,7 +22,6 @@ protocol HomeUseCase {
   /// - Returns: 찜 목록 리스트.
   func fetchFavoriteItem() -> Observable<[Item]>
 
-
   /// 찜 목록에 상품을 추가합니다.
   /// - Parameter item: 추가 대상 상품.
   /// - Returns: 해당 상품이 추가된 찜 목록 리스트.
@@ -40,7 +39,7 @@ final class DefaultHomeUseCase: HomeUseCase {
 
   init() {
     self.homeRepository = DefaultHomeRepository()
-    self.persistentStorage = PersistentStorage.shared
+    self.persistentStorage = PersistentStorage()
   }
 
   func fetchContents() -> Observable<ContentReponse> {

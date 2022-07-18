@@ -20,11 +20,11 @@ class Item: Object, Codable {
   @objc dynamic var isNew: Bool
   @objc dynamic var sellCount: Int
 
-  @objc dynamic var imageURL: URL {
+  var imageURL: URL {
     return URL(string: imageURLString)!
   }
 
-  @objc dynamic var discountRate: Int {
+  var discountRate: Int {
     return 100 - (price * 100 / actualPrice)
   }
 

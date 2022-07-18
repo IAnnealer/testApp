@@ -5,6 +5,7 @@
 //  Created by Ian on 2022/07/17.
 //
 
+import RealmSwift
 import RxSwift
 
 protocol LocalStorable {

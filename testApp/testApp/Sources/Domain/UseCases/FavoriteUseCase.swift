@@ -17,7 +17,7 @@ final class DefaultFavoriteUSeCase: FavoriteUseCase {
   private let persistentStorage: LocalStorable
 
   init() {
-    self.persistentStorage = PersistentStorage.shared
+    self.persistentStorage = PersistentStorage()
   }
 
   func fetchFavoriteItems() -> Observable<[Item]> {

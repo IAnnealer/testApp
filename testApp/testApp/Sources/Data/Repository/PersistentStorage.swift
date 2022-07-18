@@ -10,19 +10,13 @@ import RxSwift
 
 final class PersistentStorage: LocalStorable {
 
-  static let shared: PersistentStorage = .init()
-
-  let realm: Realm
-
-  private init() {
-    self.realm = try! Realm()
-  }
-
   func fetch() -> Observable<[Item]> {
+    let realm = try! Realm()
     return .just(.init(realm.objects(Item.self)))
   }
 
   func add(item: Item) -> Observable<[Item]> {
+    let realm = try! Realm()
     try! realm.write({
       realm.add(item)
     })
@@ -31,6 +25,7 @@ final class PersistentStorage: LocalStorable {
   }
 
   func delete(item: Item) -> Observable<[Item]> {
+    let realm = try! Realm()
     try! realm.write({
       realm.delete(realm.objects(Item.self).filter { $0.id == item.id })
     })
