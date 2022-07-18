@@ -24,6 +24,7 @@ final class GoodsCell: UICollectionViewCell {
     static let favoriteButtonImageTitle = "heart"
     static let favoriteButtonSelectedImageTitle = "heart.fill"
     static let newTitle = "NEW"
+    static let placeholderImageName = "placeholderImage"
   }
 
   // MARK: - Properties
@@ -88,7 +89,7 @@ final class GoodsCell: UICollectionViewCell {
     if !isFavoriteScene {
       addFavoriteButton.rx.controlEvent(.touchUpInside)
         .asDriver()
-        .throttle(.seconds(1), latest: false)
+        .throttle(.milliseconds(500), latest: false)
         .drive(onNext: { [weak self] in
           self?.feedbackGenerator.impactOccurred()
 
@@ -120,13 +121,13 @@ final class GoodsCell: UICollectionViewCell {
 // MARK: - Private
 private extension GoodsCell {
   func reloadContents(item: Item?) {
-//    guard let placeholderImage: UIImage = .init(named: Constant.placeholderImage),
-    guard let item = item else { return }
+    guard let placeholderImage: UIImage = .init(named: Constant.placeholderImageName),
+          let item = item else { return }
 
     discountGuideLabel.text = "\(item.discountRate)%"
     priceLabel.text = decmialWon(value: item.price)
     nameLabel.text = "\(item.name)"
-    imageView.sd_setImage(with: item.imageURL)
+    imageView.sd_setImage(with: item.imageURL, placeholderImage: placeholderImage)
 
     if item.sellCount >= 10 {
       sellCountLabel.text = "\(item.sellCount)개 구매중"
