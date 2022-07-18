@@ -21,6 +21,8 @@ final class HomeViewController: BaseViewController {
   // MARK: - Properties
   private weak var collectionView: UICollectionView!
   private var refreshControl: UIRefreshControl!
+  private weak var loadingView: UIView!
+  private weak var activityIndicatorView: UIActivityIndicatorView!
   private let viewModel: HomeViewModel!
 
   private let requestExtraTrigger: PublishSubject<Void> = .init()
@@ -67,10 +69,30 @@ final class HomeViewController: BaseViewController {
       $0.refreshControl = refreshControl
       view.addSubview($0)
     }
+
+    loadingView = .init().then {
+      $0.backgroundColor = .white
+      view.addSubview($0)
+    }
+
+    activityIndicatorView = .init(style: .large).then {
+      $0.backgroundColor = .clear
+      $0.color = GlobalConstant.Color.accent
+      loadingView.addSubview($0)
+    }
   }
 
   override func setupLayoutConstraints() {
     collectionView.snp.makeConstraints {
+      $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
+      $0.leading.trailing.equalToSuperview()
+    }
+
+    activityIndicatorView.snp.makeConstraints {
+      $0.center.equalToSuperview()
+    }
+
+    loadingView.snp.makeConstraints {
       $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.equalToSuperview()
     }
@@ -79,13 +101,19 @@ final class HomeViewController: BaseViewController {
   override func bind() -> Disposable {
     guard let tabBarController = tabBarController else { return Disposables.create() }
 
-    let requestInitialContents: Observable<Void> = .merge(
-      rx.viewWillAppear,
+    let viewWillAppear = rx.viewWillAppear
+      .asDriverSkipError()
+      .do(onNext: { [weak self] in
+        self?.bringLoadingViewToFront()
+      })
+
+    let requestInitialContents = Observable<Void>.merge(
+      viewWillAppear.asObservable(),
       refreshControl.rx.controlEvent(.valueChanged).asObservable()
     )
 
     let input: HomeViewModel.Input = .init(
-      requestInitialContents: requestInitialContents,
+      requestInitialContents: requestInitialContents.asObservable(),
       requestExtraContents: requestExtraTrigger.asObservable(),
       addFavoriteItem: addFavoriteItemSubject.asObservable(),
       deleteFavoriteItem: deleteFavoriteItemSubject.asObservable()
@@ -107,6 +135,7 @@ final class HomeViewController: BaseViewController {
       output.didReceiveInitialContents
         .asDriverSkipError()
         .drive(onNext: { [weak self] in
+          self?.bringCollectionViewToFront()
           self?.collectionView.reloadData()
           self?.refreshControl.endRefreshing()
         }),
@@ -201,5 +230,25 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
       let defaultHeight: CGFloat = 60
       return .calcuateGoodsCellSize(width: width, defaultHeight: defaultHeight, item: item)
     }
+  }
+}
+
+// MARK: - Private
+private extension HomeViewController {
+  func bringCollectionViewToFront() {
+    activityIndicatorView.stopAnimating()
+
+    UIView.animate(withDuration: 0.5) { [weak self] in
+      self?.loadingView.alpha = 0
+    } completion: { [weak self] _ in
+      guard let self = self else { return }
+      self.collectionView.bringSubviewToFront(self.loadingView)
+    }
+  }
+
+  func bringLoadingViewToFront() {
+    loadingView.alpha = 1
+    loadingView.bringSubviewToFront(self.collectionView)
+    activityIndicatorView.startAnimating()
   }
 }

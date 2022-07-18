@@ -95,7 +95,7 @@ private extension HomeViewModel {
   }
 
   func addFavorItem(item: Item) -> Observable<Void> {
-    return useCase.addFavoriteItem(item: item)
+    useCase.addFavoriteItem(item: item)
       .do(onNext: { [weak self] in
         self?.favoriteItemList = $0
       })
@@ -103,7 +103,7 @@ private extension HomeViewModel {
   }
 
   func deleteFavoriteItem(item: Item) -> Observable<Void> {
-    return useCase.deleteFavoriteItem(item: item)
+    useCase.deleteFavoriteItem(item: item)
       .do(onNext: { [weak self] in
         self?.favoriteItemList = $0
       })
