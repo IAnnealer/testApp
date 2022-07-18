@@ -28,6 +28,25 @@ class Item: Object, Codable {
     return 100 - (price * 100 / actualPrice)
   }
 
+  convenience init(
+    id: Int,
+    name: String,
+    imageURLString: String,
+    actualPrice: Int,
+    price: Int,
+    isNew: Bool,
+    sellCount: Int
+  ) {
+    self.init()
+    self.id = id
+    self.name = name
+    self.imageURLString = imageURLString
+    self.actualPrice = actualPrice
+    self.price = price
+    self.isNew = isNew
+    self.sellCount = sellCount
+  }
+
   enum CodingKeys: String, CodingKey {
     case id
     case name
