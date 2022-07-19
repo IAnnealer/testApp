@@ -114,7 +114,7 @@ final class HomeViewController: BaseViewController {
 
     let input: HomeViewModel.Input = .init(
       requestInitialContents: requestInitialContents.asObservable(),
-      requestExtraContents: requestExtraTrigger.asObservable(),
+      requestExtraContents: collectionView.rx_reachedBottom,
       addFavoriteItem: addFavoriteItemSubject.asObservable(),
       deleteFavoriteItem: deleteFavoriteItemSubject.asObservable()
     )
@@ -201,16 +201,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     return cell
-  }
-
-  func collectionView(_ collectionView: UICollectionView,
-                      willDisplay cell: UICollectionViewCell,
-                      forItemAt indexPath: IndexPath) {
-    guard let goodsCount = viewModel.contentsResponse?.goods.count else { return }
-
-    if indexPath.item == goodsCount - 1 && viewModel.hasMoreContents {
-      requestExtraTrigger.onNext(())
-    }
   }
 }
 
