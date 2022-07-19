@@ -37,6 +37,7 @@
 		8628E18F28825FF200019C8E /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E18E28825FF200019C8E /* UIViewController+.swift */; };
 		8628E1912882602B00019C8E /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E1902882602B00019C8E /* Array+.swift */; };
 		8628E1972882613E00019C8E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E1962882613E00019C8E /* HomeViewModel.swift */; };
+		8640CB752886CEF4009B09A0 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640CB742886CEF4009B09A0 /* UIScrollView+.swift */; };
 		869EE71C2883C95A000496BA /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869EE71B2883C95A000496BA /* PersistentStorage.swift */; };
 		869EE71E2883D3D7000496BA /* FavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869EE71D2883D3D7000496BA /* FavoriteUseCase.swift */; };
 		86D9F10D2883F4A100A6E967 /* LocalStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D9F10C2883F4A100A6E967 /* LocalStorable.swift */; };
@@ -78,6 +79,7 @@
 		8628E18E28825FF200019C8E /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8628E1902882602B00019C8E /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		8628E1962882613E00019C8E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8640CB742886CEF4009B09A0 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		869EE71B2883C95A000496BA /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
 		869EE71D2883D3D7000496BA /* FavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUseCase.swift; sourceTree = "<group>"; };
 		86D9F10C2883F4A100A6E967 /* LocalStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorable.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				8628E1902882602B00019C8E /* Array+.swift */,
 				8612D9882882989E003E0441 /* UIVIew+.swift */,
 				86D9F10E2883F6AD00A6E967 /* CGSIze+.swift */,
+				8640CB742886CEF4009B09A0 /* UIScrollView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				8628E14228824CD400019C8E /* AppDelegate.swift in Sources */,
 				869EE71E2883D3D7000496BA /* FavoriteUseCase.swift in Sources */,
 				8612D9892882989E003E0441 /* UIVIew+.swift in Sources */,
+				8640CB752886CEF4009B09A0 /* UIScrollView+.swift in Sources */,
 				8628E18028825D5800019C8E /* ViewModelType.swift in Sources */,
 				8612D9972882BF6D003E0441 /* HomeRepository.swift in Sources */,
 				8628E1972882613E00019C8E /* HomeViewModel.swift in Sources */,
