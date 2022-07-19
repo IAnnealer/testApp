@@ -93,8 +93,7 @@ final class HomeViewController: BaseViewController {
     }
 
     loadingView.snp.makeConstraints {
-      $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
-      $0.leading.trailing.equalToSuperview()
+      $0.edges.equalTo(collectionView)
     }
   }
 
@@ -228,7 +227,7 @@ private extension HomeViewController {
   func bringCollectionViewToFront() {
     activityIndicatorView.stopAnimating()
 
-    UIView.animate(withDuration: 0.5) { [weak self] in
+    UIView.animate(withDuration: 0.3) { [weak self] in
       self?.loadingView.alpha = 0
     } completion: { [weak self] _ in
       guard let self = self else { return }
