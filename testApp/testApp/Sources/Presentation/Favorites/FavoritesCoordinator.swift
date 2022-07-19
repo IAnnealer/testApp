@@ -42,9 +42,10 @@ final class DefaultFavoritesCoordinator: FavoritesCoordinator {
   }
 }
 
+// MARK: - Private
 private extension DefaultFavoritesCoordinator {
   func getViewController() -> FavoritesViewController {
-    let viewModel: FavoritesViewModel = .init()
+    let viewModel: FavoritesViewModel = .init(useCase: DefaultFavoriteUSeCase())
     let viewController: FavoritesViewController = .init(viewModel: viewModel)
 
     return viewController
