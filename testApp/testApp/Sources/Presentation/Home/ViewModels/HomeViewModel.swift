@@ -48,7 +48,10 @@ extension HomeViewModel: ViewModelType {
     let didReceiveInitialContents = input.requestInitialContents
       .flatMapLatest(fetchInitialContents)
 
-    let didReceiveExtraContents = input.requestExtraContents
+    let didReceiveExtraContents = input.requestExtraContents.throttle(
+      .seconds(1),
+      scheduler: MainScheduler.instance
+    )
       .flatMapLatest(fetchExtraContents)
 
     let didAddFavoriteItem = input.addFavoriteItem
@@ -77,7 +80,7 @@ private extension HomeViewModel {
   }
 
   func fetchExtraContents() -> Observable<Void> {
-    guard let lastId = contentsResponse?.goods.last?.id else { return .empty() }
+    guard let lastId = contentsResponse?.goods.last?.id, hasMoreContents else { return .empty() }
 
     return useCase.fetchMoreGoods(lastId: lastId)
       .filter { [weak self] goodsResponse in
