@@ -20,6 +20,7 @@ final class FavoritesViewController: BaseViewController {
 
   // MARK: - Properties
   private weak var collectionView: UICollectionView!
+  private weak var loadingView: UIView!
   private let viewModel: FavoritesViewModel
 
   init(viewModel: FavoritesViewModel) {
@@ -56,12 +57,21 @@ final class FavoritesViewController: BaseViewController {
       $0.backgroundColor = .clear
       view.addSubview($0)
     }
+
+    loadingView = .init().then {
+      $0.backgroundColor = .white
+      view.addSubview($0)
+    }
   }
 
   override func setupLayoutConstraints() {
     collectionView.snp.makeConstraints {
       $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.equalToSuperview()
+    }
+
+    loadingView.snp.makeConstraints {
+      $0.edges.equalTo(collectionView)
     }
   }
 
@@ -73,6 +83,12 @@ final class FavoritesViewController: BaseViewController {
 
     return Disposables.create([
       super.bind(),
+
+      rx.viewWillAppear
+        .asDriverSkipError()
+        .drive(onNext: { [weak self] in
+          self?.bringLoadingViewToFront()
+        }),
 
       tabBarController.rx.didSelect
         .asDriver()
@@ -86,6 +102,7 @@ final class FavoritesViewController: BaseViewController {
       output.didReceiveContents
         .asDriverSkipError()
         .drive(onNext: { [weak self] in
+          self?.bringCollectionViewToFront()
           self?.collectionView.reloadData()
         })
     ])
@@ -123,5 +140,22 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     return .calcuateGoodsCellSize(width: collectionView.frame.width,
                                   defaultHeight: defaultHeight,
                                   item: item)
+  }
+}
+
+// MARK: - Private
+private extension FavoritesViewController {
+  func bringCollectionViewToFront() {
+    UIView.animate(withDuration: 0.3) { [weak self] in
+      self?.loadingView.alpha = 0
+    } completion: { [weak self] _ in
+      guard let self = self else { return }
+      self.collectionView.bringSubviewToFront(self.loadingView)
+    }
+  }
+
+  func bringLoadingViewToFront() {
+    loadingView.alpha = 1
+    loadingView.bringSubviewToFront(collectionView)
   }
 }
