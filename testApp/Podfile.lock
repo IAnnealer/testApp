@@ -5,17 +5,31 @@ PODS:
   - Moya/RxSwift (15.0.0):
     - Moya/Core
     - RxSwift (~> 6.0)
+  - Nimble (9.2.1)
+  - Quick (5.0.1)
   - Realm (10.25.1):
     - Realm/Headers (= 10.25.1)
   - Realm/Headers (10.25.1)
   - RealmSwift (10.25.1):
     - Realm (= 10.25.1)
+  - RxBlocking (6.5.0):
+    - RxSwift (= 6.5.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
+  - RxNimble (5.1.2):
+    - RxNimble/RxBlocking (= 5.1.2)
+  - RxNimble/Core (5.1.2):
+    - Nimble (~> 9.2)
+    - RxSwift (~> 6.0)
+  - RxNimble/RxBlocking (5.1.2):
+    - RxBlocking
+    - RxNimble/Core
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
+  - RxTest (6.5.0):
+    - RxSwift (= 6.5.0)
   - SDWebImage (5.13.0):
     - SDWebImage/Core (= 5.13.0)
   - SDWebImage/Core (5.13.0)
@@ -24,9 +38,12 @@ PODS:
 
 DEPENDENCIES:
   - Moya/RxSwift
+  - Quick
   - RealmSwift
   - RxCocoa (= 6.5.0)
+  - RxNimble
   - RxSwift (= 6.5.0)
+  - RxTest
   - SDWebImage
   - SnapKit
   - Then
@@ -35,11 +52,16 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
+    - Nimble
+    - Quick
     - Realm
     - RealmSwift
+    - RxBlocking
     - RxCocoa
+    - RxNimble
     - RxRelay
     - RxSwift
+    - RxTest
     - SDWebImage
     - SnapKit
     - Then
@@ -47,15 +69,20 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   Realm: 1a6e9b4f6983711655d8c0bcb6d2d29c3afbb1f3
   RealmSwift: e72669550d27082aa4fad5d176f5076cfe806245
+  RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxNimble: 60c8162b1518306a11d0c272a65ade133b209670
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
   SDWebImage: 0327043dbb9533e75f2eff8445b3df0f2ceca6ac
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 3606ce32290473a9629f76f9a40bb9e82900f4b1
+PODFILE CHECKSUM: 547b86761ae72a5bc2bbf3a007c5c76a184fda5a
 
 COCOAPODS: 1.11.3

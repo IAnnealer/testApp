@@ -13,4 +13,11 @@ target 'testApp' do
   pod 'Moya/RxSwift'
   pod 'SDWebImage'
   pod 'RealmSwift'
+
+  target 'testAppTests' do
+    inherit! :search_paths
+    pod 'Quick'
+    pod 'RxTest'
+    pod 'RxNimble'
+  end
 end
