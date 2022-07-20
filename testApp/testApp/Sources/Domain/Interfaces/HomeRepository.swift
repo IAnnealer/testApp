@@ -7,7 +7,7 @@
 
 import RxSwift
 
-protocol HomeRepository {
+protocol HomeRepository: Injectable {
   /// 컨텐츠를 요청합니다.
   /// - Returns: `[Banner], [Item]`
   func fetchContents() -> Observable<ContentReponse>

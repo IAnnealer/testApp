@@ -5,10 +5,9 @@
 //  Created by Ian on 2022/07/17.
 //
 
-import RealmSwift
 import RxSwift
 
-protocol LocalStorable {
+protocol LocalStorable: Injectable {
   /// 찜 목록에 상품을 추가합니다.
   /// - Parameter item: 추가 대상 상품.
   /// - Returns: 해당 상품이 추가된 찜 목록 리스트.

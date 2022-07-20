@@ -14,5 +14,6 @@ protocol ViewModelType {
   associatedtype Input
   associatedtype Output
 
+  // MARK: - Methods
   func transform(_ input: Input) -> Output
 }

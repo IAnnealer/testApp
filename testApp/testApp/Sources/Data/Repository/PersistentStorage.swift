@@ -8,8 +8,9 @@
 import RealmSwift
 import RxSwift
 
-final class PersistentStorage: LocalStorable {
+final class PersistentStorage: LocalStorable, Injectable {
 
+  // MARK: - Methods
   func fetch() -> Observable<[Item]> {
     let realm = try! Realm()
     return .just(.init(realm.objects(Item.self)))

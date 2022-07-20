@@ -23,6 +23,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
   // MARK: - Properties
   var childCoordinators: [Coordinator] = []
   var navigationController: UINavigationController
+  @Inject private var useCase: HomeUseCase
 
   init() {
     self.navigationController = .init(nibName: nil, bundle: nil)
@@ -30,6 +31,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
   }
 
+  // MARK: - Methods
   func start() {
     let viewController: HomeViewController = getViewController()
     navigationController.pushViewController(viewController, animated: true)
@@ -47,7 +49,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
 // MARK: - Private
 private extension DefaultHomeCoordinator {
   func getViewController() -> HomeViewController {
-    let viewModel: HomeViewModel = .init(useCase: DefaultHomeUseCase())
+    let viewModel: HomeViewModel = .init(useCase: useCase)
     let viewController: HomeViewController = .init(viewModel: viewModel)
 
     return viewController

@@ -7,19 +7,18 @@
 
 import RxSwift
 
-protocol FavoriteUseCase {
+protocol FavoriteUseCase: Injectable {
   /// 찜 목록 리스트를 반환합니다.
   /// - Returns: 찜 목록 리스트
   func fetchFavoriteItems() -> Observable<[Item]>
 }
 
 final class DefaultFavoriteUSeCase: FavoriteUseCase {
-  private let persistentStorage: LocalStorable
 
-  init() {
-    self.persistentStorage = PersistentStorage()
-  }
+  // MARK: - Properties
+  @Inject private var persistentStorage: LocalStorable
 
+  // MARK: - Methods
   func fetchFavoriteItems() -> Observable<[Item]> {
     persistentStorage.fetch()
   }
