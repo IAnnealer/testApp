@@ -7,7 +7,7 @@
 
 import RxSwift
 
-protocol HomeUseCase {
+protocol HomeUseCase: Injectable {
   /// 컨텐츠를 요청합니다.
   /// - Returns: `[Banner], [Item]`
   func fetchContents() -> Observable<ContentReponse>
@@ -34,14 +34,12 @@ protocol HomeUseCase {
 }
 
 final class DefaultHomeUseCase: HomeUseCase {
-  private let homeRepository: HomeRepository
-  private let persistentStorage: LocalStorable
 
-  init() {
-    self.homeRepository = DefaultHomeRepository()
-    self.persistentStorage = PersistentStorage()
-  }
+  // MARK: - Properties
+  @Inject private var homeRepository: HomeRepository
+  @Inject private var persistentStorage: LocalStorable
 
+  // MARK: - Methods
   func fetchContents() -> Observable<ContentReponse> {
     homeRepository.fetchContents()
   }

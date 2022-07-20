@@ -8,6 +8,8 @@
 import RxSwift
 
 final class DefaultHomeRepository: HomeRepository {
+
+  // MARK: - Methods
   func fetchContents() -> Observable<ContentReponse> {
     return APIProvider.request(GoodsAPI.fetchContents)
       .map(ContentReponse.self)

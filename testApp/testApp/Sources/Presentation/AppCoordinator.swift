@@ -14,13 +14,15 @@ final class AppCoordinator {
   var window: UIWindow
 
   private var tabBarController: UITabBarController
+  @Inject private var homeCoordinator: HomeCoordinator
+  @Inject private var favoritesCoordinator: FavoritesCoordinator
 
-  // MARK: - Initialize
   init(in window: UIWindow) {
     self.window = window
     self.tabBarController = .init(nibName: nil, bundle: nil)
   }
 
+  // MARK: - Methods
   func start() {
     setupTabBarCoordinator()
   }
@@ -29,17 +31,11 @@ final class AppCoordinator {
 // MARK: - Private
 private extension AppCoordinator {
   func setupTabBarCoordinator() {
-    let homeNavigationController: UINavigationController
-    let favoritesNavigationController: UINavigationController
-
-    let homeCoordinator: HomeCoordinator = DefaultHomeCoordinator()
     childCoordinators.append(homeCoordinator)
-    homeNavigationController = homeCoordinator.startPushHomeScene()
-
-    let favoritesCoordinator: FavoritesCoordinator = DefaultFavoritesCoordinator()
     childCoordinators.append(favoritesCoordinator)
-    favoritesNavigationController = favoritesCoordinator.startPushFavoritesScene()
 
+    let homeNavigationController: UINavigationController = homeCoordinator.startPushHomeScene()
+    let favoritesNavigationController: UINavigationController = favoritesCoordinator.startPushFavoritesScene()
 
     tabBarController.viewControllers = [homeNavigationController, favoritesNavigationController]
     tabBarController.tabBar.tintColor = GlobalConstant.Color.accent
