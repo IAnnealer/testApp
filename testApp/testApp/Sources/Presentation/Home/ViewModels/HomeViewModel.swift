@@ -84,12 +84,9 @@ private extension HomeViewModel {
 
     return useCase.fetchMoreGoods(lastId: lastId)
       .filter { [weak self] goodsResponse in
-        if goodsResponse.goods.isEmpty {
-          self?.hasMoreContents = false
-          return false
-        } else {
-          return true
-        }
+        let isGoodsEmpty = goodsResponse.goods.isEmpty
+        self?.hasMoreContents = !isGoodsEmpty
+        return !isGoodsEmpty
       }
       .do(onNext: { [weak self] in
         self?.contentsResponse?.goods.append(contentsOf: $0.goods)
