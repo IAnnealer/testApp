@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.makeKeyAndVisible()
     self.window = window
 
+    registerDependencies()
+
     appCoordinator = .init(in: window)
     appCoordinator?.start()
   }
@@ -38,3 +40,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 }
 
+
+private extension SceneDelegate {
+  func registerDependencies() {
+    assembleDataLayer()
+    assembleDomainLayer()
+    assemblePresentationLayer()
+  }
+
+  func assembleDataLayer() {
+    DIContainer.shared.register(DefaultHomeRepository(), keyType: HomeRepository.self)
+    DIContainer.shared.register(PersistentStorage(), keyType: LocalStorable.self)
+  }
+
+  func assembleDomainLayer() {
+    DIContainer.shared.register(DefaultHomeUseCase(), keyType: HomeUseCase.self)
+    DIContainer.shared.register(DefaultFavoriteUSeCase(), keyType: FavoriteUseCase.self)
+  }
+
+  func assemblePresentationLayer() {
+    DIContainer.shared.register(DefaultHomeCoordinator(), keyType: HomeCoordinator.self)
+    DIContainer.shared.register(DefaultFavoritesCoordinator(), keyType: FavoritesCoordinator.self)
+  }
+}
