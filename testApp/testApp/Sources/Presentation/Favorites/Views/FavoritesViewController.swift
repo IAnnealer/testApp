@@ -66,8 +66,7 @@ final class FavoritesViewController: BaseViewController {
 
   override func setupLayoutConstraints() {
     collectionView.snp.makeConstraints {
-      $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
-      $0.leading.trailing.equalToSuperview()
+      $0.edges.equalTo(view.safeAreaLayoutGuide)
     }
 
     loadingView.snp.makeConstraints {
@@ -76,8 +75,6 @@ final class FavoritesViewController: BaseViewController {
   }
 
   override func bind() -> Disposable {
-    guard let tabBarController = tabBarController else { return Disposables.create() }
-
     let input: FavoritesViewModel.Input = .init(requestContents: rx.viewWillAppear)
     let output: FavoritesViewModel.Output = viewModel.transform(input)
 
@@ -88,15 +85,6 @@ final class FavoritesViewController: BaseViewController {
         .asDriverSkipError()
         .drive(onNext: { [weak self] in
           self?.bringLoadingViewToFront()
-        }),
-
-      tabBarController.rx.didSelect
-        .asDriver()
-        .drive(onNext: { [weak self] _ in
-          self?.collectionView.scrollToItem(
-            at: .init(item: 0, section: 0),
-            at: .top,
-            animated: true)
         }),
 
       output.didReceiveContents

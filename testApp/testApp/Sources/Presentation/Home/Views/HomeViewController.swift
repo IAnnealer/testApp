@@ -84,8 +84,7 @@ final class HomeViewController: BaseViewController {
 
   override func setupLayoutConstraints() {
     collectionView.snp.makeConstraints {
-      $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
-      $0.leading.trailing.equalToSuperview()
+      $0.edges.equalTo(view.safeAreaLayoutGuide)
     }
 
     activityIndicatorView.snp.makeConstraints {
@@ -98,8 +97,6 @@ final class HomeViewController: BaseViewController {
   }
 
   override func bind() -> Disposable {
-    guard let tabBarController = tabBarController else { return Disposables.create() }
-
     let viewWillAppear = rx.viewWillAppear
       .asDriverSkipError()
       .do(onNext: { [weak self] in
@@ -121,15 +118,6 @@ final class HomeViewController: BaseViewController {
 
     return Disposables.create([
       super.bind(),
-
-      tabBarController.rx.didSelect
-        .asDriver()
-        .drive(onNext: { [weak self] _ in
-          self?.collectionView.scrollToItem(
-            at: .init(item: 0, section: 0),
-            at: .top,
-            animated: true)
-        }),
 
       output.didReceiveInitialContents
         .asDriverSkipError()
